@@ -48,10 +48,12 @@ export default function Projects() {
 
 	return (
 		<section className="py-4 bg-black">
-			<div className="w-full h-screen mx-auto px-4">
-				<div className="flex items-center justify-between px-8">
-				<h2 className="text-3xl font-bold mb-8">Our Projects</h2>
-				<div className="flex justify-center gap-4 mb-8">
+			<div className="w-full h-auto min-h-[80vh] mx-auto px-2 md:px-4">
+				<div className="flex flex-col md:flex-row items-center justify-between px-2 md:px-8">
+					<h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8">
+						Our Projects
+					</h2>
+					<div className="flex justify-center gap-4 mb-4 md:mb-8">
 						<button
 							onClick={() => handleScroll("left")}
 							disabled={current === 0}
@@ -73,27 +75,28 @@ export default function Projects() {
 				<div className="relative">
 					<div
 						ref={scrollRef}
-						className="flex gap-8 overflow-x-hidden pb-4 scroll-smooth"
+						className="flex gap-4 md:gap-8 overflow-x-hidden pb-4 scroll-smooth"
 						style={{ scrollBehavior: "smooth" }}
 					>
 						{projects.map((project, idx) => (
 							<div
 								key={idx}
-								className="w-full min-w-full h-[80vh] rounded-xl p-4 flex-shrink-0 flex flex-col justify-center items-center"
+								className="w-[90vw] md:w-full min-w-[90vw] md:min-w-full h-[50vh] md:h-[80vh] rounded-xl p-2 md:p-4 flex-shrink-0 flex flex-col justify-center items-center"
 							>
 								<img
 									src={project.img}
 									alt={project.title}
-									className="w-full h-[70vh] object-cover rounded-lg mb-6"
+									className="w-full h-[30vh] md:h-[70vh] object-cover rounded-lg mb-4 md:mb-6"
 								/>
-								<h3 className="text-3xl font-semibold mb-2 text-white">
+								<h3 className="text-xl md:text-3xl font-semibold mb-2 text-white">
 									{project.title}
 								</h3>
-								<p className="text-gray-300 text-lg">{project.desc}</p>
+								<p className="text-gray-300 text-base md:text-lg">
+									{project.desc}
+								</p>
 							</div>
 						))}
 					</div>
-					
 				</div>
 			</div>
 		</section>

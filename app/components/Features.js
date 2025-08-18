@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -9,8 +9,10 @@ const Features = () => {
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
   const textRefs = useRef([]);
+  const featureRefs = useRef([]);
+  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Define your features here
   const features = [
     {
       title: "Luxury Residences",
@@ -42,54 +44,121 @@ const Features = () => {
     },
   ];
 
+  // Mark component as mounted (client-side only)
   useEffect(() => {
-    const images = imageRef.current.querySelectorAll("img");
-    const texts = textRefs.current;
+    setMounted(true);
+  }, []);
 
-    // Initial setup
-    gsap.set(images, { opacity: 0, yPercent: 20, scale: 1 });
-    gsap.set(images[0], { opacity: 1, yPercent: 0, scale: 1 });
+  // Detect mobile width
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top top",
-      end: "+=" + features.length * 400, // adjust scroll length
-      scrub: true,
-      pin: true,
-      onUpdate: (self) => {
-        const total = features.length;
-        const segment = 1 / (total - 1);
-        let index = Math.round(self.progress / segment);
-        index = Math.max(0, Math.min(index, total - 1));
+  // GSAP animations
+  useEffect(() => {
+    if (!mounted) return; // ensure client-only
 
-        images.forEach((img, i) => {
-          gsap.set(img, {
-            opacity: i === index ? 1 : 0,
-            yPercent: i === index ? 0 : -20,
-            scale: 1, // No scale jump
+    if (isMobile) {
+      // Mobile: vertical fade-in animation
+      featureRefs.current.forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+              end: "top 60%",
+              scrub: true,
+            },
+          }
+        );
+      });
+    } else {
+      // Desktop: pinned scroll with images and text highlight
+      const images = imageRef.current.querySelectorAll("img");
+      const texts = textRefs.current;
+
+      gsap.set(images, { opacity: 0, yPercent: 20, scale: 1 });
+      gsap.set(images[0], { opacity: 1, yPercent: 0, scale: 1 });
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "+=" + features.length * 400,
+        scrub: true,
+        pin: true,
+        onUpdate: (self) => {
+          const total = features.length;
+          const segment = 1 / (total - 1);
+          let index = Math.round(self.progress / segment);
+          index = Math.max(0, Math.min(index, total - 1));
+
+          images.forEach((img, i) => {
+            gsap.set(img, {
+              opacity: i === index ? 1 : 0,
+              yPercent: i === index ? 0 : -20,
+              scale: 1,
+            });
           });
-        });
 
-        texts.forEach((t, i) => {
-          gsap.set(t, {
-            opacity: i === index ? 1 : 0.3,
-            color: i === index ? "white" : "#9ca3af",
+          texts.forEach((t, i) => {
+            gsap.set(t, {
+              opacity: i === index ? 1 : 0.3,
+              color: i === index ? "white" : "#9ca3af",
+            });
           });
-        });
-      },
-    });
-  }, [features]);
+        },
+      });
+    }
+  }, [mounted, isMobile, features]);
 
+  // SSR-safe: render nothing before mounted
+  if (!mounted) return <section className="w-full h-screen bg-black"></section>;
+
+  // Mobile layout
+  if (isMobile) {
+    return (
+      <section className="flex flex-col bg-black px-4 py-16">
+        <h2 className="text-2xl font-bold text-white text-center mb-8">
+          What Do We Do
+        </h2>
+        {features.map((feature, i) => (
+          <div
+            key={i}
+            ref={(el) => (featureRefs.current[i] = el)}
+            className="flex flex-col items-center mb-16"
+          >
+            <img
+              src={feature.image}
+              alt={feature.title}
+              className="w-full h-64 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-xl font-semibold text-white mb-2">
+              {feature.title}
+            </h3>
+            <p className="text-gray-300 text-center">{feature.description}</p>
+          </div>
+        ))}
+      </section>
+    );
+  }
+
+  // Desktop layout
   return (
     <section
       ref={sectionRef}
       className="relative w-full h-screen bg-black flex overflow-hidden"
     >
-      {/* Section Title */}
       <h2 className="absolute top-10 left-0 px-8 py-5 text-4xl font-bold text-white z-20">
         What Do We Do
       </h2>
-      {/* Left Side - Images */}
+
       <div
         ref={imageRef}
         className="w-1/2 relative flex items-center justify-center h-screen"
@@ -104,7 +173,6 @@ const Features = () => {
         ))}
       </div>
 
-      {/* Right Side - Text */}
       <div className="w-1/2 flex flex-col justify-center pl-16 space-y-16 text-2xl font-semibold">
         {features.map((feature, i) => (
           <div

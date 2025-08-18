@@ -31,14 +31,14 @@ export default function Navbar() {
         showBg ? "bg-black bg-opacity-80 backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
-        <span className="font-bold text-2xl text-white">RealEstate</span>
-        <ul className="flex gap-6">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 md:px-6 py-2 md:py-3">
+        <span className="font-bold text-xl md:text-2xl text-white">RealEstate</span>
+        <ul className="flex gap-4 md:gap-6">
           {navItems.map((item) => (
             <li key={item.to}>
               <a
                 href={`#${item.to}`}
-                className="text-gray-200 hover:text-white font-medium transition"
+                className="text-gray-200 hover:text-white font-medium transition text-sm md:text-base"
               >
                 {item.label}
               </a>
