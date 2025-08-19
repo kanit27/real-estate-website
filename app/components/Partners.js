@@ -1,15 +1,15 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-
+import Image from "next/image";
 
 const partners = [
-  "https://i.1.creatium.io/disk2/d5/4e/28/bff8024c1e833620d12ce05556393b2dee/674x536q8/pdf24_reader_jkyrumjsbu_photoroom_1_1.png",
-  "https://beyonddevelopments.ae/assets/logos/beyond_logo_white.png",
-  "https://i0.wp.com/hallmarkpro.net/wp-content/uploads/2024/06/developer_EQ2pHhC5ee-1.webp?fit=860%2C484&ssl=1",
-  "https://www.claydonhouse.ae/img/project/homepage/n/ellington.png",
-  "https://ramprealestate.ae/wp-content/uploads/2024/01/EMAAR-1.png",
-  "https://cdn.sanity.io/images/6c2m9rts/production/5c2ad6f1d355854a20d6927115086d52aaed3a9d-800x215.webp?w=800&h=800&fm=webp&q=85&fit=clip&crop=center&auto=format",
-  "https://luxurylifestyleawards.com/wp-content/uploads/2021/02/54030891-0-Sobha-logo-07.png",
+  "/AnaxDevelopments.png",
+  "EMAAR.png",
+  "ImtiazDevelopments.webp",
+  "EllingtonProperties.png",
+  "Beyond.png",
+  "AziziDevelopments.webp",
+  "SobhaRealty.png"
 ];
 
 export default function Partners() {
@@ -54,7 +54,7 @@ export default function Partners() {
       {!isMobile && (
         <div className="flex justify-center gap-24 px-10">
           {partners.map((logo, idx) => (
-            <img
+            <Image
               src={logo}
               key={idx}
               alt={`Partner ${idx + 1}`}
@@ -74,7 +74,7 @@ export default function Partners() {
         >
           {/* duplicate logos for smooth infinite scroll */}
           {[...partners, ...partners].map((logo, idx) => (
-            <img
+            <Image
               src={logo}
               key={idx}
               alt={`Partner ${idx + 1}`}
