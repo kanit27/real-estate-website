@@ -11,7 +11,7 @@ export default function Hero() {
         muted
         type="video/mp4"
       />
-      <div className="absolute bottom-10 left-10  bg-opacity-60 p-6 rounded-lg">
+      <div className="absolute bottom-15 left-10 bg-opacity-60 p-6 rounded-lg">
         <h1 className="w-2/3 text-3xl md:text-6xl font-bold text-white drop-shadow-lg">
           Find Your Dream Home Today
         </h1>

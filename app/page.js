@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import ContactForm from "./components/ContactForm";
 import Features from "./components/Features";
 import Partners from "./components/Partners";
+import Copyright from "./components/Copyright";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       <div id="contact">
         <ContactForm />
       </div>
+      <Copyright />
     </main>
   );
 }

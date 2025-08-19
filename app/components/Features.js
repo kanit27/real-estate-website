@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,35 +13,38 @@ const Features = () => {
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  const features = [
-    {
-      title: "Luxury Residences",
-      description:
-        "Experience world-class luxury living with breathtaking views.",
-      image:
-        "https://prospergroup.com/wp-content/uploads/2025/03/Building-Exterior-View-Large-1.jpg",
-    },
-    {
-      title: "Modern Interiors",
-      description: "Elegant, spacious interiors designed for comfort and style.",
-      image:
-        "https://prospergroup.com/wp-content/uploads/2025/03/1040-s-miami-2-1.jpg",
-    },
-    {
-      title: "Exclusive Amenities",
-      description:
-        "Access premium facilities including pool, spa, and rooftop lounge.",
-      image:
-        "https://prospergroup.com/wp-content/uploads/2025/03/Building-Exterior-View-Large-1.jpg",
-    },
-    {
-      title: "Prime Location",
-      description:
-        "Conveniently located in the heart of the city with easy access.",
-      image:
-        "https://prospergroup.com/wp-content/uploads/2025/03/1040-s-miami-2-1.jpg",
-    },
-  ];
+  const features = useMemo(
+    () => [
+      {
+        title: "Luxury Residences",
+        description:
+          "Experience world-class luxury living with breathtaking views.",
+        image:
+          "https://prospergroup.com/wp-content/uploads/2025/03/Building-Exterior-View-Large-1.jpg",
+      },
+      {
+        title: "Modern Interiors",
+        description: "Elegant, spacious interiors designed for comfort and style.",
+        image:
+          "https://prospergroup.com/wp-content/uploads/2025/03/1040-s-miami-2-1.jpg",
+      },
+      {
+        title: "Exclusive Amenities",
+        description:
+          "Access premium facilities including pool, spa, and rooftop lounge.",
+        image:
+          "https://prospergroup.com/wp-content/uploads/2025/03/Building-Exterior-View-Large-1.jpg",
+      },
+      {
+        title: "Prime Location",
+        description:
+          "Conveniently located in the heart of the city with easy access.",
+        image:
+          "https://prospergroup.com/wp-content/uploads/2025/03/1040-s-miami-2-1.jpg",
+      },
+    ],
+    []
+  );
 
   useEffect(() => setMounted(true), []);
 

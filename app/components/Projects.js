@@ -1,21 +1,22 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Image from "next/image";
 
 const projects = [
   {
     title: "Townhouse",
-    img: "https://springfieldproperties.ae/wp-content/uploads/2025/01/townhouse.jpg",
+    img: "/townhouse.jpg",
     desc: "Discover vibrant living in stylish Dubai townhomes.",
   },
   {
     title: "Apartment",
-    img: "https://springfieldproperties.ae/wp-content/uploads/2025/01/Apartment-2048x2048.jpeg",
+    img: "/apartment.jpeg",
     desc: "Modern apartments with breathtaking city views.",
   },
   {
     title: "Villas",
-    img: "https://springfieldproperties.ae/wp-content/uploads/2025/01/villas.jpg",
+    img: "/villas.jpg",
     desc: "Spacious and luxurious villas for the ultimate lifestyle.",
   },
 ];
@@ -74,9 +75,11 @@ export default function Projects() {
         <div className="grid grid-cols-3 gap-6 px-6 md:px-40 md:pt-20">
           {projects.map((project, idx) => (
             <div key={idx} className="relative group overflow-hidden">
-              <img
+              <Image
                 src={project.img}
                 alt={project.title}
+                width={400}
+                  height={300}
                 className="w-full h-[400px] object-cover opacity-55 transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute bottom-4 left-4 text-white">
@@ -121,10 +124,12 @@ export default function Projects() {
                 key={idx}
                 className="w-[85vw] flex-shrink-0 relative rounded-lg overflow-hidden"
               >
-                <img
+                <Image
                   src={project.img}
                   alt={project.title}
-                  className="w-full h-[300px] object-cover opacity-40 rounded-lg"
+                  width={400}
+                  height={300}
+                  className="w-full h-[300px] object-cover opacity-60 rounded-lg"
                 />
                 <div className="absolute bottom-4 left-4 text-white">
                   <h3 className="text-lg font-semibold">{project.title}</h3>

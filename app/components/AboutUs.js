@@ -6,7 +6,7 @@ const AboutUs = () => {
     <section
       className="relative w-full bg-black flex flex-col md:my-10 px-4 md:px-20 md:py-48 py-32 overflow-hidden"
     >
-      <img src="/aboutus.jpg" alt="About Us" className="absolute inset-0 w-full h-full bg-center object-cover opacity-50" />
+      <img src="/aboutus.jpg" alt="About Us" className="absolute inset-0 w-full h-full bg-center object-cover opacity-80" />
 
       <h2 className="relative z-10 text-3xl md:text-4xl font-bold text-center text-white mb-10">
         About Us
