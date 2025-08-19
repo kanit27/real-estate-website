@@ -12,10 +12,10 @@ export default function Hero() {
         type="video/mp4"
       />
       <div className="absolute bottom-10 left-10  bg-opacity-60 p-6 rounded-lg">
-        <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
+        <h1 className="w-2/3 text-3xl md:text-6xl font-bold text-white drop-shadow-lg">
           Find Your Dream Home Today
         </h1>
-        <p className="text-lg text-gray-200 mt-2">
+        <p className="text-base md:text-lg text-gray-200 mt-2">
           Real Estate Solutions for Modern Living
         </p>
       </div>

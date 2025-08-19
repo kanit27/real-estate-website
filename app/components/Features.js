@@ -23,8 +23,7 @@ const Features = () => {
     },
     {
       title: "Modern Interiors",
-      description:
-        "Elegant, spacious interiors designed for comfort and style.",
+      description: "Elegant, spacious interiors designed for comfort and style.",
       image:
         "https://prospergroup.com/wp-content/uploads/2025/03/1040-s-miami-2-1.jpg",
     },
@@ -44,12 +43,8 @@ const Features = () => {
     },
   ];
 
-  // Mark component as mounted (client-side only)
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
-  // Detect mobile width
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
@@ -57,12 +52,11 @@ const Features = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // GSAP animations
   useEffect(() => {
-    if (!mounted) return; // ensure client-only
+    if (!mounted) return;
 
     if (isMobile) {
-      // Mobile: vertical fade-in animation
+      // Mobile animations
       featureRefs.current.forEach((el) => {
         gsap.fromTo(
           el,
@@ -80,12 +74,12 @@ const Features = () => {
         );
       });
     } else {
-      // Desktop: pinned scroll with images and text highlight
+      // Desktop animations
       const images = imageRef.current.querySelectorAll("img");
       const texts = textRefs.current;
 
-      gsap.set(images, { opacity: 0, yPercent: 20, scale: 1 });
-      gsap.set(images[0], { opacity: 1, yPercent: 0, scale: 1 });
+      gsap.set(images, { opacity: 0, yPercent: 20 });
+      gsap.set(images[0], { opacity: 1, yPercent: 0 });
 
       ScrollTrigger.create({
         trigger: sectionRef.current,
@@ -103,7 +97,6 @@ const Features = () => {
             gsap.set(img, {
               opacity: i === index ? 1 : 0,
               yPercent: i === index ? 0 : -20,
-              scale: 1,
             });
           });
 
@@ -118,16 +111,12 @@ const Features = () => {
     }
   }, [mounted, isMobile, features]);
 
-  // SSR-safe: render nothing before mounted
   if (!mounted) return <section className="w-full h-screen bg-black"></section>;
 
   // Mobile layout
   if (isMobile) {
     return (
       <section className="flex flex-col bg-black px-4 py-16">
-        <h2 className="text-2xl font-bold text-white text-center mb-8">
-          What Do We Do
-        </h2>
         {features.map((feature, i) => (
           <div
             key={i}
@@ -155,10 +144,6 @@ const Features = () => {
       ref={sectionRef}
       className="relative w-full h-screen bg-black flex overflow-hidden"
     >
-      <h2 className="absolute top-10 left-0 px-8 py-5 text-4xl font-bold text-white z-20">
-        What Do We Do
-      </h2>
-
       <div
         ref={imageRef}
         className="w-1/2 relative flex items-center justify-center h-screen"

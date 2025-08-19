@@ -52,12 +52,12 @@ export default function ContactForm() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       onSubmit={handleSubmit}
-      className="w-full mb-4 flex flex-col md:flex-row justify-center items-center md:gap-40 gap-8"
+      className="w-full mb-4 md:py-20 pt-32 flex flex-col md:flex-row justify-center items-center md:gap-40 gap-10"
     >
       <div className="items-start md:ml-80 flex flex-col gap-6 w-full md:w-auto px-4 md:px-0">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
         <p className="text-gray-300 w-full md:w-96 text-lg md:text-xl">
-          Reach our team today to discuss a deal or learn more about investing with us.
+          Discover Your Dream Property In Dubai
         </p>
         <a href="#">email.com</a>
         <a href="#">phone number</a>
