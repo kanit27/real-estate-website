@@ -3,13 +3,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const partners = [
-  "/AnaxDevelopments.png",
-  "EMAAR.png",
-  "ImtiazDevelopments.webp",
-  "EllingtonProperties.png",
-  "Beyond.png",
-  "AziziDevelopments.webp",
-  "SobhaRealty.png"
+  "/Anax.png",
+  "/EMAAR.png",
+  "/Imtiaz.webp",
+  "/Ellington.png",
+  "/Beyond.png",
+  "/Azizi.webp",
+  "/SobhaRealty.png"
 ];
 
 export default function Partners() {
@@ -58,7 +58,7 @@ export default function Partners() {
               src={logo}
               key={idx}
               alt={`Partner ${idx + 1}`}
-              width={120}
+              width={130}
               height={60}
               className="object-contain "
             />

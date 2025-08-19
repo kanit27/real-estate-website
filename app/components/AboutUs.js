@@ -13,19 +13,19 @@ const AboutUs = () => {
       </h2>
       <div className="relative z-10 text-white text-center text-base md:text-xl md:px-60">
         <h1 className="mb-4">
-          At SAV global, real estate is more than just property — it's about
+          At SAV global, real estate is more than just property &#8212; it&#39;s about
           vision, value, and trusted relationships.
         </h1>
         <h1 className="mb-4">
-          Founded by Ali abbas Virani, we’ve built strong partnerships with some
-          of Dubai’s leading developers and agencies to offer exclusive
+          Founded by Ali abbas Virani, we&#39;ve built strong partnerships with some
+          of Dubai&#39;s leading developers and agencies to offer exclusive
           investment opportunities and premium properties. Our focus is on
           transparency, quality, and delivering long-term value to clients
           around the world.
         </h1>
         <h1 className="mb-4 ">
-          Whether you're buying, investing, or exploring the market, we’re here
-          to guide you — with integrity and expertise.
+          Whether you&#39;re buying, investing, or exploring the market, we&#39;re here
+          to guide you &#8212; with integrity and expertise.
         </h1>
       </div>
     </section>
