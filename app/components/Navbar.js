@@ -33,7 +33,7 @@ export default function Navbar() {
     >
       <div className="w-full mx-auto flex items-center justify-center px-4 md:px-6">
 
-          <img className="h-32 object-contain md:h-44" src="/SAVGlobal.png" alt="SAVGlobal Logo" />
+          <img className="h-36 object-cover md:h-44" src="/SAVGlobal.png" alt="SAVGlobal Logo" />
 
         {/* <ul className="flex gap-4 md:gap-6">
           {navItems.map((item) => (

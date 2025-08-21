@@ -56,7 +56,7 @@ export default function Projects() {
   };
 
   return (
-    <section className="md:py-40 py-32  bg-black">
+    <section className="md:pt-40 pt-32 pb-6  bg-black">
       {/* Header */}
       <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-12 mb-16">
         <div className="w-full">

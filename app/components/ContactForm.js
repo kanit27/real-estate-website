@@ -59,7 +59,7 @@ export default function ContactForm() {
   alt="Contact background"
   className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
 />
-      <div className="items-start gap-4 md:ml-80 flex flex-col w-full md:w-auto px-4 md:px-0">
+      <div className="items-start gap-3 md:gap-3 md:ml-80 flex flex-col w-full md:w-auto px-4 md:px-0">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">Contact Us</h2>
         <p className="text-gray-300 w-full md:w-96 text-lg md:text-xl">
           Discover Your Dream Property In Dubai
@@ -74,7 +74,7 @@ export default function ContactForm() {
 
       <div className="w-full flex flex-col justify-center items-center gap-6 relative overflow-hidden px-4 md:px-0">
         
-        <div className="relative z-10 pb-10 pt-20 md:pt-32 w-full flex flex-col justify-center items-center gap-6 md:gap-10">
+        <div className="relative z-10 pb-10 pt-4 md:pt-32 w-full flex flex-col justify-center items-center gap-6 md:gap-10">
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
             <input
               type="text"

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState, useMemo } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,34 +14,31 @@ const Features = () => {
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Use images from public folder
   const features = useMemo(
     () => [
       {
         title: "Luxury Residences",
         description:
           "Experience world-class luxury living with breathtaking views.",
-        image:
-          "https://prospergroup.com/wp-content/uploads/2025/03/Building-Exterior-View-Large-1.jpg",
+        image: "/luxury-residency.jpg",
       },
       {
         title: "Modern Interiors",
         description: "Elegant, spacious interiors designed for comfort and style.",
-        image:
-          "https://prospergroup.com/wp-content/uploads/2025/03/1040-s-miami-2-1.jpg",
+        image: "/modern-interiors.jpg",
       },
       {
         title: "Exclusive Amenities",
         description:
           "Access premium facilities including pool, spa, and rooftop lounge.",
-        image:
-          "https://prospergroup.com/wp-content/uploads/2025/03/Building-Exterior-View-Large-1.jpg",
+        image: "/exclusive-amenities.jpg",
       },
       {
         title: "Prime Location",
         description:
           "Conveniently located in the heart of the city with easy access.",
-        image:
-          "https://prospergroup.com/wp-content/uploads/2025/03/1040-s-miami-2-1.jpg",
+        image: "/prime-location.jpg",
       },
     ],
     []
@@ -78,7 +76,7 @@ const Features = () => {
       });
     } else {
       // Desktop animations
-      const images = imageRef.current.querySelectorAll("img");
+      const images = imageRef.current.querySelectorAll("span"); // Next/Image renders a span wrapper
       const texts = textRefs.current;
 
       gsap.set(images, { opacity: 0, yPercent: 20 });
@@ -126,10 +124,13 @@ const Features = () => {
             ref={(el) => (featureRefs.current[i] = el)}
             className="flex flex-col items-center mb-16"
           >
-            <img
+            <Image
               src={feature.image}
               alt={feature.title}
-              className="w-full h-64 object-cover rounded-lg mb-4"
+              width={800}
+              height={400}
+              className="w-full h-96 object-cover rounded-lg mb-4"
+              priority={i === 0}
             />
             <h3 className="text-xl font-semibold text-white mb-2">
               {feature.title}
@@ -152,12 +153,16 @@ const Features = () => {
         className="w-1/2 relative flex items-center justify-center h-screen"
       >
         {features.map((feature, i) => (
-          <img
-            key={i}
-            className="absolute w-[90%] h-[70%] object-contain"
-            src={feature.image}
-            alt={feature.title}
-          />
+          <span key={i} className="absolute w-[90%] h-[70%]">
+            <Image
+              src={feature.image}
+              alt={feature.title}
+              fill
+              sizes="(max-width: 768px) 90vw, 60vw"
+              className="object-cover"
+              priority={i === 0}
+            />
+          </span>
         ))}
       </div>
 

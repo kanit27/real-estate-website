@@ -12,15 +12,15 @@ export default function Hero() {
         autoPlay
         type="video/mp4"
       />
-      <div className="absolute bottom-40 right-60 bg-opacity-60  rounded-lg">
+      <div className="absolute bottom-40 right-8 md:bottom-40 md:right-60 bg-opacity-60 rounded-lg">
         {/* <p className="w-full text-base md:text-lg text-center text-gray-200 mt-2">
           Real Estate Solutions for Modern Living
         </p> */}
-        <h1 className="text-3xl w-full  md:text-8xl drop-shadow-lg">
+        <h1 className="text-4xl w-full md:text-8xl drop-shadow-lg">
           The Future of  
           </h1>
-          <h1 className="text-white pl-48  md:text-8xl  text-end">Real Estate 
-           <span className="text-3xl italic text-end text-neutral-300"> in Dubai</span>
+          <h1 className="text-white pl-12 md:pl-48 text-4xl md:text-8xl  text-end">Real Estate 
+           <span className="md:text-3xl  text-lg italic tracking-tighter text-end text-neutral-300"> in Dubai</span>
           </h1>
       </div>
     </section>
