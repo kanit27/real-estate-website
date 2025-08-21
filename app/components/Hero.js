@@ -5,19 +5,23 @@ export default function Hero() {
     <section className="relative w-full h-screen overflow-hidden">
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="/video.mp4"
-        autoPlay
+        src="/hero-video.mp4"
         loop
         muted
+        preload="auto"
+        autoPlay
         type="video/mp4"
       />
-      <div className="absolute bottom-15 left-10 bg-opacity-60 p-6 rounded-lg">
-        <h1 className="w-2/3 text-3xl md:text-6xl font-bold text-white drop-shadow-lg">
-          Find Your Dream Home Today
-        </h1>
-        <p className="text-base md:text-lg text-gray-200 mt-2">
+      <div className="absolute bottom-40 right-60 bg-opacity-60  rounded-lg">
+        {/* <p className="w-full text-base md:text-lg text-center text-gray-200 mt-2">
           Real Estate Solutions for Modern Living
-        </p>
+        </p> */}
+        <h1 className="text-3xl w-full  md:text-8xl drop-shadow-lg">
+          The Future of  
+          </h1>
+          <h1 className="text-white pl-48  md:text-8xl  text-end">Real Estate 
+           <span className="text-3xl italic text-end text-neutral-300"> in Dubai</span>
+          </h1>
       </div>
     </section>
   );

@@ -9,7 +9,8 @@ const partners = [
   "/Ellington.png",
   "/Beyond.png",
   "/Azizi.webp",
-  "/SobhaRealty.png"
+  "/SobhaRealty.png",
+  "/Leos.webp"
 ];
 
 export default function Partners() {
@@ -23,9 +24,9 @@ export default function Partners() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto-scroll effect for mobile
+  // Auto-scroll effect for both desktop and mobile
   useEffect(() => {
-    if (!isMobile || !scrollRef.current) return;
+    if (!scrollRef.current) return;
 
     let scrollAmount = 0;
     const container = scrollRef.current;
@@ -42,7 +43,7 @@ export default function Partners() {
 
     const interval = setInterval(scrollStep, 30); // adjust speed here
     return () => clearInterval(interval);
-  }, [isMobile]);
+  }, []);
 
   return (
     <section className="py-40 bg-black">
@@ -50,41 +51,24 @@ export default function Partners() {
         Our Partnerships & Collaborations
       </h2>
 
-      {/* Desktop view: show all logos */}
-      {!isMobile && (
-        <div className="flex justify-center gap-24 px-10">
-          {partners.map((logo, idx) => (
-            <Image
-              src={logo}
-              key={idx}
-              alt={`Partner ${idx + 1}`}
-              width={130}
-              height={60}
-              className="object-contain "
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Mobile view: auto-scrolling row */}
-      {isMobile && (
-        <div
-          ref={scrollRef}
-          className="flex gap-10 overflow-hidden whitespace-nowrap"
-        >
-          {/* duplicate logos for smooth infinite scroll */}
-          {[...partners, ...partners].map((logo, idx) => (
-            <Image
-              src={logo}
-              key={idx}
-              alt={`Partner ${idx + 1}`}
-              width={70}
-              height={30}
-              className="object-contain"
-            />
-          ))}
-        </div>
-      )}
+      {/* Auto-scrolling row for both desktop and mobile */}
+      <div
+        ref={scrollRef}
+        className={`flex md:gap-36 gap-6 overflow-hidden whitespace-nowrap w-full`}
+        style={{ cursor: "grab" }}
+      >
+        {/* duplicate logos for smooth infinite scroll */}
+        {[...partners, ...partners].map((logo, idx) => (
+          <Image
+            src={logo}
+            key={idx}
+            alt={`Partner ${idx + 1}`}
+            width={isMobile ? 70 : 130}
+            height={isMobile ? 30 : 60}
+            className="object-contain"
+          />
+        ))}
+      </div>
     </section>
   );
 }

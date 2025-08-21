@@ -154,7 +154,7 @@ const Features = () => {
         {features.map((feature, i) => (
           <img
             key={i}
-            className="absolute w-[90%] h-[70%] object-cover"
+            className="absolute w-[90%] h-[70%] object-contain"
             src={feature.image}
             alt={feature.title}
           />
